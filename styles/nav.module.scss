@@ -1,0 +1,13 @@
+.navigation {
+  margin: 0;
+  padding: 20px;
+  font-weight: 600;
+  background-color: rgb(65, 65, 175);
+  text-align: center;
+  .link {
+    color: white;
+  }
+  .link:not(:last-child) {
+    margin-right: 2rem;
+  }
+}

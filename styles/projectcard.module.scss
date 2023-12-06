@@ -1,0 +1,17 @@
+.project_card {
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 7px 1px 30px -20px rgba(0, 0, 0, 0.75);
+  margin-bottom: 25px;
+  .tags {
+    display: flex;
+    .tag {
+      background-color: rgba(65, 65, 175, 0.226);
+      padding: 3px;
+      border-radius: 3px;
+    }
+    .tag:not(:last-child) {
+      margin-right: 0.75rem;
+    }
+  }
+}
