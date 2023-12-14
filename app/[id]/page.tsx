@@ -1,6 +1,6 @@
 import axios from "axios";
 import { projectCardType } from "@/types/types";
-import style from "../../styles/projectfull.module.scss";
+import style from "../../styles/projectpage.module.scss";
 
 interface Props {
   params: { id: number };
