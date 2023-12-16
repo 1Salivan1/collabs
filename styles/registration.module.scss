@@ -12,16 +12,17 @@
       font-size: 20px;
       margin-bottom: 20px;
     }
-    .btn {
-      margin-bottom: 20px;
-    }
     .link {
       color: black;
       transition: 0.2s;
+      font-size: 20px;
     }
     .link:hover {
       transition: 0.2s;
       color: rgb(65, 65, 175);
+    }
+    p {
+      font-size: 15px;
     }
   }
 }
