@@ -1,10 +1,10 @@
 "use client";
 import React, { useEffect } from "react";
 import { useState } from "react";
-import style from "../styles/projectlist.module.scss";
+import style from "./projectlist.module.scss";
 import { projectCardType } from "@/types/types";
-import ProjectCard from "./ProjectCard";
-import SortByTags from "./SortByTags";
+import ProjectCard from "../ProjectsCard/ProjectCard";
+import SortByTags from "../SortByTags/SortByTags";
 import Link from "next/link";
 
 interface Props {
@@ -17,15 +17,22 @@ const ProjectsList = (props: Props) => {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (sort.includes(e.target.value)) {
-      // Если тег уже выбран, убрать его из массива
       setSort((prevSort) => prevSort.filter((tag) => tag !== e.target.value));
     } else {
-      // Если тег не выбран, добавить его в массив
       setSort((prevSort) => [...prevSort, e.target.value]);
     }
   };
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    if (sort.length === 0) {
+      setCurrentData(props.data);
+    } else {
+      let filteredData = props.data.filter((item) => {
+        return item.tags.some((tag) => sort.includes(tag.toLowerCase()));
+      });
+      setCurrentData(filteredData);
+    }
+  }, [sort]);
 
   return (
     <div>
@@ -43,6 +50,11 @@ const ProjectsList = (props: Props) => {
             </Link>
           ))}
         </div>
+        {currentData.length === 0 ? (
+          <h2 className={style.not_found}>К сожалению ничего не найдено :(</h2>
+        ) : (
+          ""
+        )}
         <SortByTags handleChange={handleChange} />
       </div>
     </div>

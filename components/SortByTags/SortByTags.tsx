@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { useState } from "react";
-import style from "../styles/sortbytags.module.scss";
+import style from "./sortbytags.module.scss";
 
 interface Props {
   handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;

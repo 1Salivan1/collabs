@@ -1,5 +1,5 @@
 import React from "react";
-import style from "../styles/projectcard.module.scss";
+import style from "./projectcard.module.scss";
 
 interface Props {
   id: number;
