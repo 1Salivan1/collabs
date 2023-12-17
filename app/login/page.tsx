@@ -15,9 +15,7 @@ export default function Login() {
           <button className="btn">Войти</button>
         </div>
         <div>
-          <Link href="/login/restore" className={style.link}>
-            Я забыл пароль
-          </Link>
+          <p className={style.link}>Я забыл пароль</p>
         </div>
       </form>
     </section>
