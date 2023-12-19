@@ -7,6 +7,55 @@ body {
   margin: 0;
 }
 
+main {
+  padding: 10px 400px;
+}
+
+.navigation {
+  margin: 0;
+  font-weight: 600;
+  background-color: rgb(65, 65, 175);
+  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 400px;
+  .burger {
+    display: none;
+    .trait {
+      height: 2px;
+      width: 30px;
+      background-color: white;
+    }
+    .trait:not(:last-child) {
+      margin-bottom: 8px;
+    }
+  }
+  .links {
+    display: flex;
+  }
+  .active {
+    display: none;
+  }
+  span {
+    color: white;
+  }
+  .link_auth {
+    color: white;
+    font-weight: 400;
+  }
+  .link {
+    color: white;
+  }
+  .link:not(:last-child) {
+    margin-right: 2rem;
+  }
+}
+
+.page-header {
+  text-align: center;
+  font-size: 30px;
+}
+
 .btn {
   cursor: pointer;
   color: white;

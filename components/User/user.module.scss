@@ -1,0 +1,31 @@
+.user_card {
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 7px 1px 30px -20px rgba(0, 0, 0, 0.75);
+  margin-bottom: 25px;
+  display: flex;
+  flex-direction: column;
+  h3 {
+    margin: 0;
+  }
+  .user_main_info {
+    display: flex;
+    .avatar {
+      margin-right: 5px;
+    }
+    .user_name_info {
+      .tags {
+        display: flex;
+        .tag {
+          margin-right: 3px;
+          background-color: rgba(65, 65, 175, 0.226);
+          padding: 3px;
+          border-radius: 3px;
+        }
+      }
+    }
+  }
+  .description {
+    text-wrap: wrap;
+  }
+}

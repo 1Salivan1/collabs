@@ -11,7 +11,7 @@ export default async function Home() {
 
   return (
     <section className={style.projects_section}>
-      <h1 className={style.project_section__header}>
+      <h1 className="page-header">
         Проекты в которых вы можете принять участие
       </h1>
       <div className={style.projects_list}>

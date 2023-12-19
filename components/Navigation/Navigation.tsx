@@ -1,27 +1,38 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import Link from "next/link";
-import style from "./navigation.module.scss";
 
 const Navigation = () => {
+  const [active, setActive] = useState(false);
+
+  const toggleMenu = () => {
+    setActive(!active);
+  };
+
   return (
-    <div className={style.navigation}>
-      <div>
-        <Link className={style.link} href="/">
+    <div className="navigation">
+      <div className="burger" onClick={toggleMenu}>
+        <div className="trait"></div>
+        <div className="trait"></div>
+        <div className="trait"></div>
+      </div>
+      <div className={`links ${active ? "active" : ""}`}>
+        <Link className="link" href="/">
           Проекты
         </Link>
-        <Link className={style.link} href="/looking_for">
+        <Link className="link" href="/looking_for">
           Ищу проект
         </Link>
-        <Link className={style.link} href="/my_projects">
+        <Link className="link" href="/my_projects">
           Мои проекты
         </Link>
       </div>
       <div>
-        <Link className={style.link_auth} href="/login">
+        <Link className="link_auth" href="/login">
           Войти
         </Link>
         <span> | </span>
-        <Link className={style.link_auth} href="/registration">
+        <Link className="link_auth" href="/registration">
           Регистрация
         </Link>
       </div>

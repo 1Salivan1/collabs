@@ -13,3 +13,27 @@
     }
   }
 }
+
+@media screen and (max-width: 700px) {
+  .sort {
+    display: block;
+    h4 {
+      text-align: center;
+      border-top: 2px solid black;
+      padding-top: 10px;
+    }
+    .types_block {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+      label {
+        margin: 5px;
+        font-size: 20px;
+      }
+      label:not(:last-child) {
+        margin-right: 15px;
+      }
+    }
+  }
+}
