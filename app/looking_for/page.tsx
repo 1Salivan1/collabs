@@ -1,19 +1,42 @@
 import User from "@/components/User/User";
 import style from "../../styles/looking_for.module.scss";
+import UserList from "@/components/UserList/UserList";
 
 export default function Looking_for() {
+  const data = [
+    {
+      id: 1,
+      username: "User1",
+      tags: ["Front-end", "JavaScript"],
+      micro_description:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+      full_description: "eqeqeqweqweqweqweqweqweqwqweqweqweqew",
+      contacts: ["Telegram: zxc123"],
+    },
+    {
+      id: 2,
+      username: "User2",
+      tags: ["Back-end", "JavaScript"],
+      micro_description:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. ",
+      full_description: "eqeqeqweqweqweqweqweqweqwqweqweqweqew",
+      contacts: ["Telegram: zxc123"],
+    },
+    {
+      id: 3,
+      username: "User3",
+      tags: ["Software", "C++"],
+      micro_description:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+      full_description: "eqeqeqweqweqweqweqweqweqwqweqweqweqew",
+      contacts: ["Telegram: zxc123"],
+    },
+  ];
   return (
     <section className="main">
       <h1 className="page-header">Исполнители которые ищут проект</h1>
       <div className={style.user_list}>
-        {Array.from({ length: 5 }, (_, index) => (
-          <User
-            key={index}
-            username={"User"}
-            tags={["Frontend", "TypeScript"]}
-            about={"Text text text text text text"}
-          />
-        ))}
+        <UserList data={data} />
       </div>
     </section>
   );
