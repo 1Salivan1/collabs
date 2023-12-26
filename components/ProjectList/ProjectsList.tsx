@@ -54,7 +54,10 @@ const ProjectsList = (props: Props) => {
         ) : (
           ""
         )}
-        <SortByTags handleChange={handleChange} />
+        <div>
+          <h4>Проекты</h4>
+          <SortByTags handleChange={handleChange} />
+        </div>
       </div>
     </div>
   );
