@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 import style from "./login.module.scss";
 import { tags } from "@/components/SortByTags/tags";
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 import API_BASE_URL from "@/config";
 
 const LoginForm = () => {
@@ -13,9 +13,11 @@ const LoginForm = () => {
   const [git, setGit] = useState("");
   const [tagsArr, setTagsArr] = useState<string[]>([]);
   const [about, setAbout] = useState("");
+  const [aboutLength, setAboutLength] = useState(0);
   const [telegram, setTelegram] = useState("");
   const [discord, setDiscord] = useState("");
   const [linkedin, setLinkedin] = useState("");
+  const [error, setError] = useState([]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (tagsArr.includes(e.target.value)) {
@@ -29,7 +31,11 @@ const LoginForm = () => {
 
   const handlePost = async (e: React.FormEvent) => {
     e.preventDefault();
-    const socials = [telegram, discord, linkedin].filter(Boolean);
+    const socials = [
+      telegram && `Telegram - ${telegram}`,
+      discord && `Discord - ${discord}`,
+      linkedin && `Linked-in - ${linkedin}`,
+    ].filter(Boolean);
     try {
       const response = await axios.post(`${API_BASE_URL}/auth/registration`, {
         username,
@@ -40,9 +46,16 @@ const LoginForm = () => {
         about,
         socials,
       });
-      console.log(response.data);
+      console.log(response);
+      if (!response) {
+        throw new AxiosError();
+      }
     } catch (error) {
-      console.error("Error during registration:", error);
+      if (axios.isAxiosError(error) && error.response) {
+        setError(error.response.data);
+      } else {
+        console.error("Error during registration:", error);
+      }
     }
   };
 
@@ -105,11 +118,14 @@ const LoginForm = () => {
         <textarea
           className={style.textarea}
           value={about}
-          onChange={(e) => setAbout(e.target.value)}
+          onChange={(e) => {
+            setAbout(e.target.value), setAboutLength(e.target.value.length);
+          }}
           name="about"
           placeholder="Расскажите о себе, или о том, какую команду хотите найти"
         ></textarea>
       </div>
+      <span>{aboutLength} / 2000</span>
       <div>
         <h4>Контакты, (укажите 1 или более на выбор)</h4>
         <div>

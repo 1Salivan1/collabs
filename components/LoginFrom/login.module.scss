@@ -25,6 +25,8 @@
     }
   }
   .textarea {
+    border-radius: 5px;
+    border: 2px solid grey;
     resize: vertical;
     width: 300px;
     min-height: 100px;
