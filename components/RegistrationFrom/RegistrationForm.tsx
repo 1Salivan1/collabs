@@ -1,12 +1,12 @@
 "use client";
 import React, { useState } from "react";
 import Link from "next/link";
-import style from "./login.module.scss";
+import style from "../../styles/auth.module.scss";
 import { tags } from "@/components/SortByTags/tags";
 import axios, { AxiosError } from "axios";
 import API_BASE_URL from "@/config";
 
-const LoginForm = () => {
+const RegistrationForm = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -17,7 +17,8 @@ const LoginForm = () => {
   const [telegram, setTelegram] = useState("");
   const [discord, setDiscord] = useState("");
   const [linkedin, setLinkedin] = useState("");
-  const [error, setError] = useState([]);
+  const [error, setError] = useState<{ path: string; msg: string }[] | []>([]);
+  const [success, setSuccess] = useState<null | boolean>(null);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (tagsArr.includes(e.target.value)) {
@@ -50,6 +51,9 @@ const LoginForm = () => {
       if (!response) {
         throw new AxiosError();
       }
+      if (response.status === 200) {
+        setSuccess(true);
+      }
     } catch (error) {
       if (axios.isAxiosError(error) && error.response) {
         setError(error.response.data);
@@ -59,8 +63,31 @@ const LoginForm = () => {
     }
   };
 
+  if (success === true) {
+    return (
+      <div className={style.login_form}>
+        <h4>Регистрация прошла успешно!</h4>
+        <div>
+          <Link href="/login" className="btn">
+            Войти
+          </Link>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <form action="" onSubmit={handlePost} className={style.login_form}>
+      {error?.map((err) => err.path === "exist") && (
+        <span style={{ color: "red" }}>
+          {error.find((err) => err.path === "exist")?.msg}
+        </span>
+      )}
+      {error?.map((err) => err.path === "username") && (
+        <span style={{ color: "red" }}>
+          {error.find((err) => err.path === "username")?.msg}
+        </span>
+      )}
       <div>
         <input
           type="text"
@@ -71,6 +98,11 @@ const LoginForm = () => {
           placeholder="Имя или псевдоним"
         />
       </div>
+      {error?.map((err) => err.path === "email") && (
+        <span style={{ color: "red" }}>
+          {error.find((err) => err.path === "email")?.msg}
+        </span>
+      )}
       <div>
         <input
           type="email"
@@ -81,6 +113,11 @@ const LoginForm = () => {
           placeholder="E-mail"
         />
       </div>
+      {error?.map((err) => err.path === "password") && (
+        <span style={{ color: "red" }}>
+          {error.find((err) => err.path === "password")?.msg}
+        </span>
+      )}
       <div>
         <input
           type="password"
@@ -91,6 +128,11 @@ const LoginForm = () => {
           placeholder="Пароль"
         />
       </div>
+      {error?.map((err) => err.path === "git") && (
+        <span style={{ color: "red" }}>
+          {error.find((err) => err.path === "git")?.msg}
+        </span>
+      )}
       <div>
         <input
           type="text"
@@ -101,6 +143,11 @@ const LoginForm = () => {
           placeholder="GitHub link"
         />
       </div>
+      {error?.map((err) => err.path === "tags") && (
+        <span style={{ color: "red" }}>
+          {error.find((err) => err.path === "tags")?.msg}
+        </span>
+      )}
       <div className={style.registration_languages}>
         <h4>Выберете языки которые вы используете в работе</h4>
         {tags.map((tag) => (
@@ -125,9 +172,19 @@ const LoginForm = () => {
           placeholder="Расскажите о себе, или о том, какую команду хотите найти"
         ></textarea>
       </div>
+      {error?.map((err) => err.path === "about") && (
+        <span style={{ color: "red" }}>
+          {error.find((err) => err.path === "about")?.msg}
+        </span>
+      )}
       <span>{aboutLength} / 2000</span>
       <div>
         <h4>Контакты, (укажите 1 или более на выбор)</h4>
+        {error?.map((err) => err.path === "socials") && (
+          <span style={{ color: "red" }}>
+            {error.find((err) => err.path === "socials")?.msg}
+          </span>
+        )}
         <div>
           <input
             type="text"
@@ -174,4 +231,4 @@ const LoginForm = () => {
   );
 };
 
-export default LoginForm;
+export default RegistrationForm;

@@ -17,18 +17,34 @@
       border-bottom: 2px solid rgb(83, 83, 83);
       outline: none;
     }
-    .btn {
+    .registration_languages {
       margin-bottom: 20px;
+      h4 {
+        margin-top: 0;
+      }
+      .tag:not(:last-child) {
+        margin-right: 10px;
+      }
+    }
+    .textarea {
+      border-radius: 5px;
+      border: 2px solid grey;
+      resize: vertical;
+      width: 300px;
+      min-height: 100px;
     }
     .link {
-      cursor: pointer;
-      margin: 0;
       color: black;
       transition: 0.2s;
+      font-size: 20px;
+      cursor: pointer;
     }
     .link:hover {
       transition: 0.2s;
       color: rgb(65, 65, 175);
+    }
+    p {
+      font-size: 15px;
     }
   }
 }
