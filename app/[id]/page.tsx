@@ -16,9 +16,9 @@ export default async function Project({ params }: Props) {
   return (
     <div className={style.post}>
       <h1 className={style.header}>{post?.title}</h1>
-      <div className={style.tags}>
+      <div className="tags">
         {post?.tags.map((tag) => (
-          <span className={style.tag} key={tag}>
+          <span className="tag-big" key={tag}>
             {tag}
           </span>
         ))}
@@ -30,7 +30,7 @@ export default async function Project({ params }: Props) {
           <li key={position}>{position}</li>
         ))}
       </ul>
-      <h3>Котнтакты</h3>
+      <h3>Контакты</h3>
       <ul>
         {post?.contacts.map((contact) => (
           <li key={contact}>{contact}</li>

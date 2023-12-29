@@ -19,9 +19,9 @@ export default function UserPage() {
           <Link className={style.link} href="https://github.com/">
             GitHub
           </Link>
-          <div className={style.tags}>
+          <div className="tags">
             {tags.map((tag) => (
-              <div className={style.tag} key={tag}>
+              <div className="tag" key={tag}>
                 {tag}
               </div>
             ))}

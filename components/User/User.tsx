@@ -25,9 +25,9 @@ const User = (props: Props) => {
           <Link href="looking_for/1">
             <h3>{props.username}</h3>
           </Link>
-          <div className={style.tags}>
+          <div className="tags">
             {props.tags.map((tag) => (
-              <div key={tag} className={style.tag}>
+              <div key={tag} className="tag">
                 {tag}
               </div>
             ))}
