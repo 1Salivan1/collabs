@@ -91,7 +91,7 @@ const RegistrationForm = () => {
       <div>
         <input
           type="text"
-          className={style.input}
+          className="input"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
           name="username"
@@ -109,7 +109,7 @@ const RegistrationForm = () => {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           name="email"
-          className={style.input}
+          className="input"
           placeholder="E-mail"
         />
       </div>
@@ -124,7 +124,7 @@ const RegistrationForm = () => {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           name="password"
-          className={style.input}
+          className="input"
           placeholder="Пароль"
         />
       </div>
@@ -139,7 +139,7 @@ const RegistrationForm = () => {
           value={git}
           onChange={(e) => setGit(e.target.value)}
           name="git"
-          className={style.input}
+          className="input"
           placeholder="GitHub link"
         />
       </div>
@@ -188,7 +188,7 @@ const RegistrationForm = () => {
         <div>
           <input
             type="text"
-            className={style.input}
+            className="input"
             value={telegram}
             onChange={(e) => setTelegram(e.target.value)}
             name="telegram"
@@ -198,7 +198,7 @@ const RegistrationForm = () => {
         <div>
           <input
             type="text"
-            className={style.input}
+            className="input"
             value={discord}
             onChange={(e) => setDiscord(e.target.value)}
             name="discord"
@@ -208,7 +208,7 @@ const RegistrationForm = () => {
         <div>
           <input
             type="text"
-            className={style.input}
+            className="input"
             value={linkedin}
             onChange={(e) => setLinkedin(e.target.value)}
             name="linkedin"

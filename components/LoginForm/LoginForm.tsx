@@ -38,7 +38,7 @@ const LoginForm = () => {
         <input
           type="text"
           onChange={(e) => setEmail(e.target.value)}
-          className={style.input}
+          className="input"
           placeholder="E-mail"
         />
       </div>
@@ -46,7 +46,7 @@ const LoginForm = () => {
         <input
           type="text"
           onChange={(e) => setPassword(e.target.value)}
-          className={style.input}
+          className="input"
           placeholder="Пароль"
         />
       </div>

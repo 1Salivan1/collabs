@@ -13,9 +13,9 @@ const ProjectCard = (props: Props) => {
   return (
     <div className={style.project_card}>
       <h3>{props.title}</h3>
-      <div className={style.tags}>
+      <div className="tags">
         {props.tags.map((tag) => (
-          <div key={tag} className={style.tag}>
+          <div key={tag} className="tag">
             {tag}
           </div>
         ))}

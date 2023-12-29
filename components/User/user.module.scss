@@ -14,15 +14,8 @@
       margin-right: 5px;
     }
     .user_name_info {
-      .tags {
-        display: flex;
-        flex-wrap: wrap;
-        .tag {
-          margin: 3px;
-          background-color: rgba(65, 65, 175, 0.226);
-          padding: 3px;
-          border-radius: 3px;
-        }
+      h3 {
+        margin-bottom: 3px;
       }
     }
   }

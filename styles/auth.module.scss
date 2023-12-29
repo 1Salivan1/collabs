@@ -5,18 +5,7 @@
     flex-direction: column;
     padding: 200px;
     justify-content: center;
-    .input {
-      border: none;
-      border-bottom: 2px solid grey;
-      padding: 5px;
-      font-size: 20px;
-      margin-bottom: 20px;
-      transition: 0.2s;
-    }
-    .input:focus {
-      border-bottom: 2px solid rgb(83, 83, 83);
-      outline: none;
-    }
+
     .registration_languages {
       margin-bottom: 20px;
       h4 {
