@@ -2,17 +2,4 @@
   .header {
     text-align: center;
   }
-
-  .tags {
-    text-align: center;
-    .tag {
-      background-color: rgba(65, 65, 175, 0.226);
-      padding: 6px;
-      border-radius: 3px;
-      font-weight: 600;
-    }
-    .tag:not(:last-child) {
-      margin-right: 10px;
-    }
-  }
 }
