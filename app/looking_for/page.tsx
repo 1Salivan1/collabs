@@ -9,12 +9,7 @@ export default function Looking_for() {
       username: "User1",
       tags: [
         "Front-end",
-        "JavaScript",
-        "JavaScript",
-        "JavaScript",
-        "JavaScript",
-        "JavaScript",
-        "JavaScript",
+        "JavaScript"
       ],
       micro_description:
         "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
