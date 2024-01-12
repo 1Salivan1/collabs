@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import style from "../../styles/auth.module.scss";
 import API_BASE_URL from "@/config";
 import axios, { AxiosError } from "axios";
+import Link from "next/link";
 
 const LoginForm = () => {
   const [email, setEmail] = useState("");
@@ -56,7 +57,9 @@ const LoginForm = () => {
         </button>
       </div>
       <div>
-        <p className={style.link}>Я забыл пароль</p>
+        <Link href="#" className={style.link}>
+          Я забыл пароль
+        </Link>
       </div>
     </form>
   );

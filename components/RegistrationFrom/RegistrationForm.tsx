@@ -78,6 +78,7 @@ const RegistrationForm = () => {
 
   return (
     <form action="" onSubmit={handlePost} className={style.login_form}>
+      <h1>Регистрация</h1>
       {error?.map((err) => err.path === "exist") && (
         <span style={{ color: "red" }}>
           {error.find((err) => err.path === "exist")?.msg}
@@ -163,7 +164,7 @@ const RegistrationForm = () => {
       </div>
       <div>
         <textarea
-          className={style.textarea}
+          className="textarea"
           value={about}
           onChange={(e) => {
             setAbout(e.target.value), setAboutLength(e.target.value.length);

@@ -15,25 +15,21 @@
         margin-right: 10px;
       }
     }
-    .textarea {
-      border-radius: 5px;
-      border: 2px solid grey;
-      resize: vertical;
-      width: 300px;
-      min-height: 100px;
-    }
     .link {
-      color: black;
+      color: white;
       transition: 0.2s;
       font-size: 20px;
       cursor: pointer;
     }
     .link:hover {
-      transition: 0.2s;
-      color: rgb(65, 65, 175);
+      transition: 0.1s;
+      border-bottom: 2px solid rgb(65, 65, 175);
     }
     p {
       font-size: 15px;
+    }
+    .btn {
+      margin-bottom: 20px;
     }
   }
 }

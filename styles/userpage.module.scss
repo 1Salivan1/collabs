@@ -1,10 +1,16 @@
 .user_info {
   display: flex;
   align-items: center;
+  .avatar {
+    margin-right: 30px;
+  }
   .text_info {
     display: flex;
     flex-direction: column;
     row-gap: 0.5rem;
+    .git {
+      color: white;
+    }
     h1 {
       margin: 0;
       font-size: 40px;
