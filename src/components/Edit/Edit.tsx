@@ -14,8 +14,6 @@ const Edit = () => {
         className="textarea"
         name=""
         id=""
-        cols="30"
-        rows="10"
         placeholder="Введите описание проекта"
       ></textarea>
       <h2>Кто нужен (укажите через запятую)</h2>
