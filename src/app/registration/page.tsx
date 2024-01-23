@@ -1,4 +1,4 @@
-import RegistrationForm from "@/components/RegistrationFrom/RegistrationForm";
+import RegistrationForm from "@/src/components/RegistrationFrom/RegistrationForm";
 import style from "../../styles/auth.module.scss";
 
 export default function Registration() {

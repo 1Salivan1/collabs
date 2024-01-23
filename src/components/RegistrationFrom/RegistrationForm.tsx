@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import style from "../../styles/auth.module.scss";
-import { tags } from "@/components/SortByTags/tags";
+import { tags } from "@/src/components/SortByTags/tags";
 import axios, { AxiosError } from "axios";
 import API_BASE_URL from "@/config";
 

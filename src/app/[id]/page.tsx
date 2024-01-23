@@ -1,5 +1,5 @@
 import axios from "axios";
-import { projectCardType } from "@/types/types";
+import { projectCardType } from "@/types";
 import style from "../../styles/projectpage.module.scss";
 
 interface Props {

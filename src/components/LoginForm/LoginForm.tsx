@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import style from "../../styles/auth.module.scss";
 import API_BASE_URL from "@/config";
-import axios, { AxiosError } from "axios";
+import axios, { AxiosError, AxiosResponse } from "axios";
 import Link from "next/link";
 
 const LoginForm = () => {
@@ -17,10 +17,10 @@ const LoginForm = () => {
         email,
         password,
       });
-      console.log(response);
       if (!response) {
         throw new AxiosError();
       }
+      localStorage.setItem("login", response.data);
     } catch (error) {
       if (axios.isAxiosError(error) && error.response) {
         setError(error.response.data.msg);
@@ -29,8 +29,6 @@ const LoginForm = () => {
       }
     }
   };
-
-  console.log(error);
 
   return (
     <form action="" onSubmit={handlePost} className={style.login_form}>
@@ -45,7 +43,7 @@ const LoginForm = () => {
       </div>
       <div>
         <input
-          type="text"
+          type="password"
           onChange={(e) => setPassword(e.target.value)}
           className="input"
           placeholder="Пароль"

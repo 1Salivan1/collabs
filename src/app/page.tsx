@@ -1,8 +1,8 @@
 import React from "react";
 import axios from "axios";
 import style from "../styles/home.module.scss";
-import { projectCardType } from "@/types/types";
-import ProjectsList from "@/components/ProjectList/ProjectsList";
+import { projectCardType } from "@/types";
+import ProjectsList from "../components/ProjectList/ProjectsList";
 
 export default async function Home() {
   const url = "https://6478b240362560649a2e4a2c.mockapi.io/projects";

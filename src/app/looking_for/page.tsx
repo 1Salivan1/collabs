@@ -1,16 +1,12 @@
-import User from "@/components/User/User";
 import style from "../../styles/looking_for.module.scss";
-import UserList from "@/components/UserList/UserList";
+import UserList from "@/src/components/UserList/UserList";
 
 export default function Looking_for() {
   const data = [
     {
       id: 1,
       username: "User1",
-      tags: [
-        "Front-end",
-        "JavaScript"
-      ],
+      tags: ["Front-end", "JavaScript"],
       micro_description:
         "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
       full_description: "eqeqeqweqweqweqweqweqweqwqweqweqweqew",
