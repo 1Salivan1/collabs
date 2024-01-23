@@ -1,4 +1,4 @@
-import Edit from "@/components/Edit/Edit";
+import Edit from "@/src/components/Edit/Edit";
 
 export default function Edit_Project() {
   return (
