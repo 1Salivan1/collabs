@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import style from "./projectlist.module.scss";
-import { projectCardType } from "@/types";
+import { projectCardType } from "@/src/types/types";
 import ProjectCard from "../ProjectsCard/ProjectCard";
 import SortByTags from "../SortByTags/SortByTags";
 import Link from "next/link";

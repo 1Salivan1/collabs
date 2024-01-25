@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import User from "../User/User";
 import SortByTags from "../SortByTags/SortByTags";
 import style from "./userlist.module.scss";
-import { userCardType } from "@/types";
+import { userCardType } from "@/src/types/types";
 
 interface Props {
   data: userCardType[];

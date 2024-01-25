@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 import style from "../styles/home.module.scss";
-import { projectCardType } from "@/types";
+import { projectCardType } from "@/src/types/types";
 import ProjectsList from "../components/ProjectList/ProjectsList";
 
 export default async function Home() {

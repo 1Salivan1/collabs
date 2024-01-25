@@ -4,11 +4,13 @@ import style from "../../styles/auth.module.scss";
 import API_BASE_URL from "@/config";
 import axios, { AxiosError, AxiosResponse } from "axios";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const router = useRouter();
 
   const handlePost = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -21,6 +23,7 @@ const LoginForm = () => {
         throw new AxiosError();
       }
       localStorage.setItem("login", response.data);
+      router.push("/");
     } catch (error) {
       if (axios.isAxiosError(error) && error.response) {
         setError(error.response.data.msg);
