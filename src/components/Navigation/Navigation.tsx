@@ -64,17 +64,18 @@ const Navigation = () => {
       </div>
       {typeof window !== "undefined" && localStorage.getItem("login") ? (
         <div>
-          <Link href="#" className="link_auth">
-            {user?.username}
+          <Link href="/personal" className="link_auth">
+            {user !== null ? user.username : ""}
           </Link>
-          <span>|</span>
-          <a
+          <span style={{ marginLeft: "5px", marginRight: "5px" }}>|</span>
+          <span
+            style={{ fontWeight: "400", cursor: "pointer" }}
             onClick={() => {
               localStorage.removeItem("login"), location.reload();
             }}
           >
             Выход
-          </a>
+          </span>
         </div>
       ) : (
         <div>

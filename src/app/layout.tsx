@@ -3,7 +3,6 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "../styles/global.scss";
 import "../styles/adaptive.scss";
-import StoreProvider from "../redux/StoreProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,9 +20,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <Navigation />
-        <main>
-          <StoreProvider>{children}</StoreProvider>
-        </main>
+        <main>{children}</main>
       </body>
     </html>
   );
