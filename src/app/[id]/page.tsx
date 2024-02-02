@@ -15,13 +15,15 @@ export default async function Project({ params }: Props) {
 
   return (
     <div className={style.post}>
-      <h1 className={style.header}>{post?.title}</h1>
-      <div className="tags">
-        {post?.tags.map((tag) => (
-          <span className="tag-big" key={tag}>
-            {tag}
-          </span>
-        ))}
+      <div className={style.header_info}>
+        <h1 className={style.header}>{post?.title}</h1>
+        <div className={`tags ${style.tag_list}`}>
+          {post?.tags.map((tag) => (
+            <span className="tag-big" key={tag}>
+              {tag}
+            </span>
+          ))}
+        </div>
       </div>
       <p>{post?.full_description}</p>
       <h3>Мы нуждаемся в следующих специалистах:</h3>

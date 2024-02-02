@@ -10,7 +10,6 @@ interface Props {
 }
 
 const User = (props: Props) => {
-  const tags = ["Front-end", "TypeScript"];
   return (
     <div className={style.user_card}>
       <div className={style.user_main_info}>

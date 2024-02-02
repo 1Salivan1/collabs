@@ -6,7 +6,7 @@ export default function UserPage() {
   const tags = ["TypeScript", "React"];
 
   return (
-    <section>
+    <section className={style.userpage}>
       <div className={style.user_info}>
         <Image
           src="https://cdn-icons-png.flaticon.com/128/149/149071.png"
@@ -29,6 +29,7 @@ export default function UserPage() {
           </div>
         </div>
       </div>
+      <h3>Обо мне :</h3>
       <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa veritatis
         necessitatibus quia! Distinctio dicta itaque adipisci molestiae nam

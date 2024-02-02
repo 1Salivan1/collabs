@@ -22,7 +22,7 @@ const LoginForm = () => {
       if (!response) {
         throw new AxiosError();
       }
-      localStorage.setItem("login", response.data);
+      document.cookie = `login=${response.data}; max-age=2506000`;
       router.push("/");
     } catch (error) {
       if (axios.isAxiosError(error) && error.response) {

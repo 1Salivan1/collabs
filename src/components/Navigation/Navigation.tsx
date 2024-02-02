@@ -4,6 +4,7 @@ import Link from "next/link";
 import axios, { AxiosError } from "axios";
 import API_BASE_URL from "@/config";
 import { User } from "@/src/types/types";
+import getCookie from "@/src/utils/getCookie";
 
 const Navigation = () => {
   const [active, setActive] = useState(false);
@@ -16,10 +17,9 @@ const Navigation = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        if (localStorage.getItem("login")) {
-          const token = localStorage.getItem("login");
+        if (getCookie("login") !== undefined) {
           const headers = {
-            Authorization: `Bearer ${token}`,
+            Authorization: `Bearer ${getCookie("login")}`,
           };
 
           const response = await axios.get(`${API_BASE_URL}/auth/me`, {
@@ -54,7 +54,7 @@ const Navigation = () => {
         <Link className="link" href="/looking_for">
           Ищу проект
         </Link>
-        {typeof window !== "undefined" && localStorage.getItem("login") ? (
+        {getCookie("login") !== undefined ? (
           <Link className="link" href="/my_projects">
             Мои проекты
           </Link>
@@ -62,7 +62,7 @@ const Navigation = () => {
           ""
         )}
       </div>
-      {typeof window !== "undefined" && localStorage.getItem("login") ? (
+      {getCookie("login") !== undefined ? (
         <div>
           <Link href="/personal" className="link_auth">
             {user !== null ? user.username : ""}
@@ -71,7 +71,9 @@ const Navigation = () => {
           <span
             style={{ fontWeight: "400", cursor: "pointer" }}
             onClick={() => {
-              localStorage.removeItem("login"), location.reload();
+              document.cookie =
+                "login=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
+              location.reload();
             }}
           >
             Выход

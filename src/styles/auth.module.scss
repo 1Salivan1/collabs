@@ -1,11 +1,26 @@
 .main {
   text-align: center;
+  h1,
+  h2,
+  h3,
+  h4 {
+    margin-bottom: 10px;
+  }
+  p {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  span {
+    margin-bottom: 5px;
+  }
   .login_form {
     display: flex;
     flex-direction: column;
     padding: 200px;
     justify-content: center;
-
+    .success {
+      margin-bottom: 20px;
+    }
     .registration_languages {
       margin-bottom: 20px;
       h4 {

@@ -10,7 +10,6 @@ const RegistrationForm = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [git, setGit] = useState("");
   const [tagsArr, setTagsArr] = useState<string[]>([]);
   const [about, setAbout] = useState("");
   const [aboutLength, setAboutLength] = useState(0);
@@ -42,7 +41,6 @@ const RegistrationForm = () => {
         username,
         email,
         password,
-        git,
         tags: tagsArr,
         about,
         socials,
@@ -66,7 +64,7 @@ const RegistrationForm = () => {
   if (success === true) {
     return (
       <div className={style.login_form}>
-        <h4>Регистрация прошла успешно!</h4>
+        <h4 className={style.success}>Регистрация прошла успешно!</h4>
         <div>
           <Link href="/login" className="btn">
             Войти
@@ -127,21 +125,6 @@ const RegistrationForm = () => {
           name="password"
           className="input"
           placeholder="Пароль"
-        />
-      </div>
-      {error?.map((err) => err.path === "git") && (
-        <span style={{ color: "red" }}>
-          {error.find((err) => err.path === "git")?.msg}
-        </span>
-      )}
-      <div>
-        <input
-          type="text"
-          value={git}
-          onChange={(e) => setGit(e.target.value)}
-          name="git"
-          className="input"
-          placeholder="GitHub link"
         />
       </div>
       {error?.map((err) => err.path === "tags") && (

@@ -1,19 +1,31 @@
-.user_info {
-  display: flex;
-  align-items: center;
-  .avatar {
-    margin-right: 30px;
-  }
-  .text_info {
+.userpage {
+  .user_info {
     display: flex;
-    flex-direction: column;
-    row-gap: 0.5rem;
-    .git {
-      color: white;
+    align-items: center;
+    margin-bottom: 50px;
+    .avatar {
+      margin-right: 30px;
     }
-    h1 {
-      margin: 0;
-      font-size: 40px;
+    .text_info {
+      display: flex;
+      flex-direction: column;
+      row-gap: 0.5rem;
+      .git {
+        color: white;
+      }
+      h1 {
+        margin: 0;
+        font-size: 40px;
+      }
     }
+  }
+  h3 {
+    margin-bottom: 5px;
+  }
+  p {
+    margin-bottom: 25px;
+  }
+  li {
+    list-style: none;
   }
 }
