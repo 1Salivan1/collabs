@@ -39,7 +39,7 @@ const Navigation = () => {
 
     fetchData();
   }, []);
-  console.log(getCookie("login"));
+
   return (
     <div className="navigation">
       <div className="burger" onClick={toggleMenu}>

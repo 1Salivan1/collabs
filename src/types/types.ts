@@ -26,3 +26,12 @@ export type userCardType = {
   full_description: string;
   contacts: string[];
 };
+
+export type myProject = {
+  id: number;
+  title: string;
+  tags: string[];
+  text: string;
+  needs: string[];
+  socials: string[];
+};
