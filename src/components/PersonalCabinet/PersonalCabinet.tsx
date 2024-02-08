@@ -49,9 +49,6 @@ const PersonalCabinet = () => {
               <Image src={settings} width={30} height={30} alt="Settings" />
             </Link>
           </div>
-          <div className={style.git}>
-            <a href={user?.git}>GitHub</a>
-          </div>
           <ul className="tags">
             {user?.tags.map((tag) => (
               <li key={tag} className="tag">

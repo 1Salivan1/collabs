@@ -1,5 +1,5 @@
 function getCookie(name: string) {
-  if (typeof window !== "undefined") {
+  if (typeof document !== "undefined") {
     let matches = document.cookie.match(
       new RegExp(
         "(?:^|; )" +

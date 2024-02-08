@@ -39,7 +39,7 @@ const Navigation = () => {
 
     fetchData();
   }, []);
-
+  console.log(getCookie("login"));
   return (
     <div className="navigation">
       <div className="burger" onClick={toggleMenu}>
@@ -54,15 +54,17 @@ const Navigation = () => {
         <Link className="link" href="/looking_for">
           Ищу проект
         </Link>
-        {getCookie("login") !== undefined ? (
-          <Link className="link" href="/my_projects">
-            Мои проекты
-          </Link>
+        {user ? (
+          <>
+            <Link className="link" href="/my_projects">
+              Мои проекты
+            </Link>
+          </>
         ) : (
           ""
         )}
       </div>
-      {getCookie("login") !== undefined ? (
+      {user ? (
         <div>
           <Link href="/personal" className="link_auth">
             {user !== null ? user.username : ""}

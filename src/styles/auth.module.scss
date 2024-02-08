@@ -16,8 +16,16 @@
   .login_form {
     display: flex;
     flex-direction: column;
-    padding: 200px;
+    padding-top: 50px;
+    padding-left: 250px;
+    padding-right: 250px;
     justify-content: center;
+    .about-length {
+      margin-bottom: 15px;
+    }
+    .registration-textarea {
+      height: 150px;
+    }
     .success {
       margin-bottom: 20px;
     }
@@ -29,6 +37,10 @@
       .tag:not(:last-child) {
         margin-right: 10px;
       }
+    }
+    .contacts-block {
+      display: flex;
+      flex-direction: column;
     }
     .link {
       color: white;

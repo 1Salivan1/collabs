@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import style from "../../styles/auth.module.scss";
 import API_BASE_URL from "@/config";
-import axios, { AxiosError, AxiosResponse } from "axios";
+import axios, { AxiosError } from "axios";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
@@ -35,6 +35,7 @@ const LoginForm = () => {
 
   return (
     <form action="" onSubmit={handlePost} className={style.login_form}>
+      <h1>Вход</h1>
       <span style={{ color: "red" }}>{error}</span>
       <div>
         <input

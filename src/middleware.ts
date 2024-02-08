@@ -9,4 +9,6 @@ export function middleware(request: NextRequest) {
   }
 }
 
-export const config = { matcher: ["/personal"] };
+export const config = {
+  matcher: ["/personal", "/my_projects", "/edit_project"],
+};

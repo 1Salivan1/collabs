@@ -87,46 +87,40 @@ const RegistrationForm = () => {
           {error.find((err) => err.path === "username")?.msg}
         </span>
       )}
-      <div>
-        <input
-          type="text"
-          className="input"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-          name="username"
-          placeholder="Имя или псевдоним"
-        />
-      </div>
+      <input
+        type="text"
+        className="input"
+        value={username}
+        onChange={(e) => setUsername(e.target.value)}
+        name="username"
+        placeholder="Имя или псевдоним"
+      />
       {error?.map((err) => err.path === "email") && (
         <span style={{ color: "red" }}>
           {error.find((err) => err.path === "email")?.msg}
         </span>
       )}
-      <div>
-        <input
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          name="email"
-          className="input"
-          placeholder="E-mail"
-        />
-      </div>
+      <input
+        type="email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        name="email"
+        className="input"
+        placeholder="E-mail"
+      />
       {error?.map((err) => err.path === "password") && (
         <span style={{ color: "red" }}>
           {error.find((err) => err.path === "password")?.msg}
         </span>
       )}
-      <div>
-        <input
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          name="password"
-          className="input"
-          placeholder="Пароль"
-        />
-      </div>
+      <input
+        type="password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+        name="password"
+        className="input"
+        placeholder="Пароль"
+      />
       {error?.map((err) => err.path === "tags") && (
         <span style={{ color: "red" }}>
           {error.find((err) => err.path === "tags")?.msg}
@@ -145,23 +139,21 @@ const RegistrationForm = () => {
           </label>
         ))}
       </div>
-      <div>
-        <textarea
-          className="textarea"
-          value={about}
-          onChange={(e) => {
-            setAbout(e.target.value), setAboutLength(e.target.value.length);
-          }}
-          name="about"
-          placeholder="Расскажите о себе, или о том, какую команду хотите найти"
-        ></textarea>
-      </div>
+      <textarea
+        className={`textarea ${style["registration-textarea"]}`}
+        value={about}
+        onChange={(e) => {
+          setAbout(e.target.value), setAboutLength(e.target.value.length);
+        }}
+        name="about"
+        placeholder="Расскажите о себе, или о том, какую команду хотите найти"
+      ></textarea>
       {error?.map((err) => err.path === "about") && (
         <span style={{ color: "red" }}>
           {error.find((err) => err.path === "about")?.msg}
         </span>
       )}
-      <span>{aboutLength} / 2000</span>
+      <span className={style["about-length"]}>{aboutLength} / 2000</span>
       <div>
         <h4>Контакты, (укажите 1 или более на выбор)</h4>
         {error?.map((err) => err.path === "socials") && (
@@ -169,7 +161,7 @@ const RegistrationForm = () => {
             {error.find((err) => err.path === "socials")?.msg}
           </span>
         )}
-        <div>
+        <div className={style["contacts-block"]}>
           <input
             type="text"
             className="input"
@@ -178,8 +170,6 @@ const RegistrationForm = () => {
             name="telegram"
             placeholder="Telegram link"
           />
-        </div>
-        <div>
           <input
             type="text"
             className="input"
@@ -188,8 +178,6 @@ const RegistrationForm = () => {
             name="discord"
             placeholder="Discord nickname"
           />
-        </div>
-        <div>
           <input
             type="text"
             className="input"
