@@ -1,4 +1,10 @@
 .edit {
   display: flex;
   flex-direction: column;
+  h2 {
+    margin-bottom: 15px;
+  }
+  .project-description {
+    height: 300px;
+  }
 }

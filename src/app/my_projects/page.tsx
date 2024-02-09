@@ -5,6 +5,7 @@ import getCookie from "@/src/utils/getCookie";
 import { useEffect, useState } from "react";
 import ProjectCard from "@/src/components/ProjectsCard/ProjectCard";
 import { myProject } from "@/src/types/types";
+import Link from "next/link";
 
 export default function My_Projects() {
   const [data, setData] = useState<any>();
@@ -37,9 +38,9 @@ export default function My_Projects() {
   return (
     <section className={style.main}>
       <h1 className="page-header">Мои проекты</h1>
-      <button className={`btn ${style["create-new-btn"]}`}>
+      <Link href="edit_project" className={`btn ${style["create-new-btn"]}`}>
         Создать новый
-      </button>
+      </Link>
       {data ? (
         <>
           {data.projects.map((item: myProject) => (
