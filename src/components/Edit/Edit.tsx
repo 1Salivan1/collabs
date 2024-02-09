@@ -1,5 +1,7 @@
+"use client";
+import SortByTags from "../SortByTags/SortByTags";
 import style from "./edit.module.scss";
-import { useForm, SubmitHandler } from "react-hook-form";
+import { SubmitHandler, useForm } from "react-hook-form";
 
 interface Props {
   edit_mode?: boolean;
@@ -8,17 +10,18 @@ interface Props {
 interface MyForm {
   title: string;
   text: string;
-  tags: string;
+  needs: string;
   telegram: string;
   discord: string;
   lenkedin: string;
 }
 
 const Edit = (props: Props) => {
-  const { register } = useForm();
+  const { register, handleSubmit } = useForm<MyForm>();
+  const onSubmit: SubmitHandler<MyForm> = (data) => console.log(data);
 
   return (
-    <form className={style.edit}>
+    <form className={style.edit} onSubmit={handleSubmit(onSubmit)}>
       <h2>Название</h2>
       <input
         {...register("title")}
@@ -26,30 +29,50 @@ const Edit = (props: Props) => {
         className="input"
         placeholder="Введите название проекта"
       />
+      <SortByTags direction="row" />
       <h2>Описание проекта</h2>
       <textarea
+        {...register("text")}
         className={`textarea ${style["project-description"]}`}
-        name=""
-        id=""
         placeholder="Введите описание проекта"
       ></textarea>
       <h2>Кто нужен (укажите через запятую)</h2>
       <input
+        {...register("needs")}
         type="text"
         className="input"
         placeholder="Введите специалистов которые вам нужны"
       />
       <h2>Контакты для связи</h2>
-      <input type="text" className="input" placeholder="telegram" />
-      <input type="text" className="input" placeholder="discord" />
-      <input type="text" className="input" placeholder="linked-in" />
+      <input
+        {...register("telegram")}
+        type="text"
+        className="input"
+        placeholder="telegram"
+      />
+      <input
+        {...register("discord")}
+        type="text"
+        className="input"
+        placeholder="discord"
+      />
+      <input
+        {...register("lenkedin")}
+        type="text"
+        className="input"
+        placeholder="linked-in"
+      />
       {props.edit_mode ? (
         <div>
-          <button className="btn">Сохранить</button>
+          <button className="btn" type="submit">
+            Сохранить
+          </button>
         </div>
       ) : (
         <div>
-          <button className="btn">Создать</button>
+          <button className="btn" type="submit">
+            Создать
+          </button>
         </div>
       )}
     </form>

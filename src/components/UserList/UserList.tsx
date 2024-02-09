@@ -52,8 +52,11 @@ const UserList = (props: Props) => {
           )}
         </div>
         <div className={style["filter"]}>
-          <h4>Языки</h4>
-          <SortByTags handleChange={handleChange} />
+          <SortByTags
+            direction={"column"}
+            tittle={"Фильтр"}
+            handleChange={handleChange}
+          />
         </div>
       </div>
     </div>

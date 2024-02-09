@@ -52,8 +52,11 @@ const ProjectsList = (props: Props) => {
           ""
         )}
         <div className={style["filter"]}>
-          <h4>Фильтры</h4>
-          <SortByTags handleChange={handleChange} />
+          <SortByTags
+            direction={"column"}
+            tittle={"Фильтр"}
+            handleChange={handleChange}
+          />
         </div>
       </div>
     </div>
