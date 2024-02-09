@@ -27,13 +27,13 @@ const SortByTags = (props: Props) => {
             style={
               props.direction === "row"
                 ? { marginRight: "15px", marginBottom: "20px" }
-                : ""
+                : {}
             }
           >
             <input
               type="checkbox"
               onChange={(e) => props.handleChange && props.handleChange(e)}
-              value={tag.toLowerCase()}
+              value={tag}
             />
             {tag}
           </label>

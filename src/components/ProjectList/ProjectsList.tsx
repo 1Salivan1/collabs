@@ -13,10 +13,12 @@ const ProjectsList = (props: Props) => {
   const [sort, setSort] = useState<string[]>([]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (sort.includes(e.target.value)) {
-      setSort((prevSort) => prevSort.filter((tag) => tag !== e.target.value));
+    if (sort.includes(e.target.value.toLowerCase())) {
+      setSort((prevSort) =>
+        prevSort.filter((tag) => tag !== e.target.value.toLowerCase())
+      );
     } else {
-      setSort((prevSort) => [...prevSort, e.target.value]);
+      setSort((prevSort) => [...prevSort, e.target.value.toLowerCase()]);
     }
   };
 

@@ -4,7 +4,6 @@ import Link from "next/link";
 import style from "../../styles/auth.module.scss";
 import { tags } from "@/src/components/SortByTags/tags";
 import axios, { AxiosError } from "axios";
-import API_BASE_URL from "@/config";
 
 const RegistrationForm = () => {
   const [username, setUsername] = useState("");
@@ -37,14 +36,17 @@ const RegistrationForm = () => {
       linkedin && `Linked-in - ${linkedin}`,
     ].filter(Boolean);
     try {
-      const response = await axios.post(`${API_BASE_URL}/auth/registration`, {
-        username,
-        email,
-        password,
-        tags: tagsArr,
-        about,
-        socials,
-      });
+      const response = await axios.post(
+        `${process.env.NEXT_PUBLIC_API_BASE_URL}/auth/registration`,
+        {
+          username,
+          email,
+          password,
+          tags: tagsArr,
+          about,
+          socials,
+        }
+      );
       console.log(response);
       if (!response) {
         throw new AxiosError();
