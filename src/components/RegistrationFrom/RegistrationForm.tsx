@@ -47,7 +47,6 @@ const RegistrationForm = () => {
           socials,
         }
       );
-      console.log(response);
       if (!response) {
         throw new AxiosError();
       }

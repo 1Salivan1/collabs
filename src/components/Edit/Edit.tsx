@@ -5,6 +5,7 @@ import style from "./edit.module.scss";
 import { SubmitHandler, useForm } from "react-hook-form";
 import axios from "axios";
 import getCookie from "@/src/utils/getCookie";
+import { useRouter } from "next/navigation";
 
 interface Props {
   edit_mode?: boolean;
@@ -15,14 +16,25 @@ interface MyForm {
   tags: string[];
   text: string;
   needs: string[];
-  socials: [telegram: string, discord: string, linkedin: string];
+  socials: string[];
 }
 
 const Edit = (props: Props) => {
   const [tags, setTags] = useState<string[]>([]);
   const [needs, setNeeds] = useState("");
+  const [telegram, setTelegram] = useState<string>("");
+  const [discord, setDiscord] = useState<string>("");
+  const [linkedin, setLinkedin] = useState<string>("");
+  const [error, setError] = useState<{ path: string; msg: string }[] | []>();
+  const router = useRouter();
   const { register, handleSubmit } = useForm<MyForm>();
-  const onSubmit: SubmitHandler<MyForm> = (data) => {
+
+  const onSubmit: SubmitHandler<MyForm> = async (data) => {
+    const socials = [
+      telegram && `Telegram - ${telegram}`,
+      discord && `Discord - ${discord}`,
+      linkedin && `Linked-in - ${linkedin}`,
+    ].filter(Boolean);
     try {
       const token = getCookie("login");
       const config = {
@@ -32,13 +44,18 @@ const Edit = (props: Props) => {
       };
       data.tags = tags;
       data.needs = createArray(needs);
-      axios.post(
+      data.socials = socials;
+
+      const response = await axios.post(
         `${process.env.NEXT_PUBLIC_API_BASE_URL}/projects`,
         data,
         config
       );
-    } catch (error) {
-      console.log(error);
+      if (response.status === 200) {
+        router.push("/my_projects");
+      }
+    } catch (error: any) {
+      setError(error?.response.data);
     }
   };
 
@@ -61,20 +78,40 @@ const Edit = (props: Props) => {
   return (
     <form className={style.edit} onSubmit={handleSubmit(onSubmit)}>
       <h2>Название</h2>
+      {error?.map((err) => err.path === "title") && (
+        <span style={{ color: "red" }}>
+          {error.find((err) => err.path === "title")?.msg}
+        </span>
+      )}
       <input
         {...register("title")}
         type="text"
         className="input"
         placeholder="Введите название проекта"
       />
+      {error?.map((err) => err.path === "tags") && (
+        <span style={{ color: "red" }}>
+          {error.find((err) => err.path === "tags")?.msg}
+        </span>
+      )}
       <SortByTags direction="row" handleChange={handleChange} />
       <h2>Описание проекта</h2>
+      {error?.map((err) => err.path === "text") && (
+        <span style={{ color: "red" }}>
+          {error.find((err) => err.path === "text")?.msg}
+        </span>
+      )}
       <textarea
         {...register("text")}
         className={`textarea ${style["project-description"]}`}
         placeholder="Введите описание проекта"
       ></textarea>
       <h2>Кто нужен (укажите через запятую)</h2>
+      {error?.map((err) => err.path === "needs") && (
+        <span style={{ color: "red" }}>
+          {error.find((err) => err.path === "needs")?.msg}
+        </span>
+      )}
       <input
         onChange={(e) => setNeeds(e.target.value)}
         type="text"
@@ -82,20 +119,25 @@ const Edit = (props: Props) => {
         placeholder="Введите специалистов которые вам нужны"
       />
       <h2>Контакты для связи</h2>
+      {error?.map((err) => err.path === "socials") && (
+        <span style={{ color: "red" }}>
+          {error.find((err) => err.path === "socials")?.msg}
+        </span>
+      )}
       <input
-        {...register(`socials.0`)}
+        onChange={(e) => setTelegram(e.target.value)}
         type="text"
         className="input"
         placeholder="telegram"
       />
       <input
-        {...register(`socials.1`)}
+        onChange={(e) => setDiscord(e.target.value)}
         type="text"
         className="input"
         placeholder="discord"
       />
       <input
-        {...register(`socials.2`)}
+        onChange={(e) => setLinkedin(e.target.value)}
         type="text"
         className="input"
         placeholder="linked-in"
