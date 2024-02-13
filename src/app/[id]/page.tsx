@@ -25,7 +25,7 @@ export default async function Project({ params }: Props) {
           ))}
         </div>
       </div>
-      <p>{post?.full_description}</p>
+      <p>{post?.description}</p>
       <h3>Мы нуждаемся в следующих специалистах:</h3>
       <ul>
         {post?.needs.map((position) => (

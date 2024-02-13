@@ -1,9 +1,9 @@
-import Edit from "@/src/components/Edit/Edit";
+import CreateProject from "@/src/components/CreateProject/CreateProject";
 
-export default function Edit_Project() {
+export default function Create_Project() {
   return (
     <section>
-      <Edit />
+      <CreateProject />
     </section>
   );
 }

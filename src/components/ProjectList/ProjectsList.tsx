@@ -43,8 +43,7 @@ const ProjectsList = (props: Props) => {
               id={item.id}
               title={item.title}
               tags={item.tags}
-              micro_description={item.micro_description}
-              full_description={item.full_description}
+              description={item.description}
             />
           ))}
         </div>

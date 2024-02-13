@@ -1,15 +1,11 @@
 "use client";
+import style from "./editpoject.module.scss";
 import { useState } from "react";
 import SortByTags from "../SortByTags/SortByTags";
-import style from "./edit.module.scss";
 import { SubmitHandler, useForm } from "react-hook-form";
 import axios from "axios";
 import getCookie from "@/src/utils/getCookie";
 import { useRouter } from "next/navigation";
-
-interface Props {
-  edit_mode?: boolean;
-}
 
 interface MyForm {
   title: string;
@@ -19,7 +15,7 @@ interface MyForm {
   socials: string[];
 }
 
-const Edit = (props: Props) => {
+const CreateProject = () => {
   const [tags, setTags] = useState<string[]>([]);
   const [needs, setNeeds] = useState("");
   const [telegram, setTelegram] = useState<string>("");
@@ -142,21 +138,13 @@ const Edit = (props: Props) => {
         className="input"
         placeholder="linked-in"
       />
-      {props.edit_mode ? (
-        <div>
-          <button className="btn" type="submit">
-            Сохранить
-          </button>
-        </div>
-      ) : (
-        <div>
-          <button className="btn" type="submit">
-            Создать
-          </button>
-        </div>
-      )}
+      <div>
+        <button className="btn" type="submit">
+          Создать
+        </button>
+      </div>
     </form>
   );
 };
 
-export default Edit;
+export default CreateProject;
