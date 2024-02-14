@@ -34,16 +34,6 @@ export default function My_Projects() {
     getData();
   });
 
-  const handleDelete = async (id: number) => {
-    try {
-      const response = await axios.post(
-        `${process.env.NEXT_PUBLIC_API_BASE_URL}/projects/${id}`
-      );
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
   return (
     <section className={style.main}>
       <h1 className="page-header">Мои проекты</h1>
@@ -60,7 +50,6 @@ export default function My_Projects() {
               tags={item.tags}
               description={item.text}
               my_project={true}
-              on_delete={handleDelete}
             />
           ))}
         </>
