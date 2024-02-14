@@ -14,20 +14,19 @@ const SortByTags = (props: Props) => {
     <div className={style.sort}>
       <h4>{props.tittle}</h4>
       <div
-        style={
+        className={
           props.direction === "row"
-            ? { flexDirection: "row" }
-            : { flexDirection: "column" }
+            ? style["types-block__row"]
+            : style["types-block__column"]
         }
-        className={style.types_block}
       >
         {tags.map((tag) => (
           <label
             key={tag}
-            style={
+            className={
               props.direction === "row"
-                ? { marginRight: "15px", marginBottom: "20px" }
-                : {}
+                ? style["types-block__row-label"]
+                : style["types-block__column-label"]
             }
           >
             <input

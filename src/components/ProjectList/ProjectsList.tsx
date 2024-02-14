@@ -53,11 +53,7 @@ const ProjectsList = (props: Props) => {
           ""
         )}
         <div className={style["filter"]}>
-          <SortByTags
-            direction={"column"}
-            tittle={"Фильтр"}
-            handleChange={handleChange}
-          />
+          <SortByTags tittle={"Фильтр"} handleChange={handleChange} />
         </div>
       </div>
     </div>

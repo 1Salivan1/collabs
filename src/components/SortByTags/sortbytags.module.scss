@@ -5,10 +5,15 @@
     margin: 0;
     margin-bottom: 0.5rem;
   }
-  .types_block {
+  .types-block__row {
     display: flex;
-    label {
-      text-wrap: nowrap;
+    flex-direction: row;
+  }
+  .types-block__column {
+    display: flex;
+    flex-direction: column;
+    .types-block__column-label {
+      white-space: nowrap;
     }
   }
 }
@@ -21,17 +26,13 @@
       border-top: 2px solid black;
       padding-top: 10px;
     }
-    .types_block {
-      display: flex;
+    .types-block__column {
+      justify-content: center;
       flex-direction: row;
       flex-wrap: wrap;
-      justify-content: center;
-      label {
-        margin: 5px;
-        font-size: 20px;
-      }
-      label:not(:last-child) {
+      .types-block__column-label {
         margin-right: 15px;
+        margin-bottom: 10px;
       }
     }
   }

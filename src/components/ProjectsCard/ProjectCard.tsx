@@ -4,6 +4,7 @@ import Link from "next/link";
 import axios from "axios";
 import getCookie from "@/src/utils/getCookie";
 import { useRouter } from "next/router";
+import Image from "next/image";
 
 interface Props {
   id: number;
@@ -63,7 +64,13 @@ const ProjectCard = (props: Props) => {
             className={style["btn-edit"]}
             href={`/edit_project/${props.id}`}
           >
-            ✏
+            <Image
+              className={style["image"]}
+              height={20}
+              width={20}
+              src="/pencil.png"
+              alt="Picture of the author"
+            />
           </Link>
           <button
             className={style["btn-delete"]}
