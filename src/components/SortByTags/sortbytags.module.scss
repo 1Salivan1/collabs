@@ -8,6 +8,9 @@
   .types-block__row {
     display: flex;
     flex-direction: row;
+    .types-block__row-label {
+      margin-right: 15px;
+    }
   }
   .types-block__column {
     display: flex;

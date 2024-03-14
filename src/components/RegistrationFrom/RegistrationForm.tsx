@@ -4,6 +4,9 @@ import Link from "next/link";
 import style from "../../styles/auth.module.scss";
 import { tags } from "@/src/components/SortByTags/tags";
 import axios, { AxiosError } from "axios";
+import Input from "@/src/UI/Input/Input";
+import Button from "@/src/UI/Button/Button";
+import TextArea from "@/src/UI/TextArea/TextArea";
 
 const RegistrationForm = () => {
   const [username, setUsername] = useState("");
@@ -77,6 +80,9 @@ const RegistrationForm = () => {
 
   return (
     <form action="" onSubmit={handlePost} className={style.login_form}>
+      <Input error="qe" />
+      <Button text="qwewqe" />
+      <TextArea />
       <h1>Регистрация</h1>
       {error?.map((err) => err.path === "exist") && (
         <span style={{ color: "red" }}>

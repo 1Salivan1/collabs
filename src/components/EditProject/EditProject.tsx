@@ -1,11 +1,16 @@
 "use client";
 import style from "./editpoject.module.scss";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import SortByTags from "../SortByTags/SortByTags";
 import { SubmitHandler, useForm } from "react-hook-form";
 import axios from "axios";
 import getCookie from "@/src/utils/getCookie";
 import { useRouter } from "next/navigation";
+import { myProject } from "@/src/types/types";
+
+interface Props {
+  id: number;
+}
 
 interface MyForm {
   title: string;
@@ -15,15 +20,40 @@ interface MyForm {
   socials: string[];
 }
 
-const CreateProject = () => {
+const EditProject = (props: Props) => {
+  const [title, setTitle] = useState<string>("");
   const [tags, setTags] = useState<string[]>([]);
-  const [needs, setNeeds] = useState("");
+  const [text, setText] = useState<string>("");
+  const [needs, setNeeds] = useState<string>("");
   const [telegram, setTelegram] = useState<string>("");
   const [discord, setDiscord] = useState<string>("");
   const [linkedin, setLinkedin] = useState<string>("");
+  const [data, setData] = useState<myProject>();
+  const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<{ path: string; msg: string }[] | []>();
-  const router = useRouter();
   const { register, handleSubmit } = useForm<MyForm>();
+  const router = useRouter();
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          `${process.env.NEXT_PUBLIC_API_BASE_URL}/projects/${props.id}`
+        );
+        if (response.status === 200) {
+          const data: myProject = response.data;
+          setData(data);
+          setLoading(false);
+          setTitle(data.title);
+          setText(data.text);
+          setNeeds(data.needs.toString());
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchData();
+  }, [props.id]);
 
   const onSubmit: SubmitHandler<MyForm> = async (data) => {
     const socials = [
@@ -71,6 +101,10 @@ const CreateProject = () => {
     }
   };
 
+  if (loading === true) {
+    return <h1 style={{ textAlign: "center" }}>Загрузка...</h1>;
+  }
+
   return (
     <form className={style.edit} onSubmit={handleSubmit(onSubmit)}>
       <h2>Название</h2>
@@ -80,10 +114,12 @@ const CreateProject = () => {
         </span>
       )}
       <input
-        {...register("title")}
+        {...register("title", { required: true })}
         type="text"
         className="input"
         placeholder="Введите название проекта"
+        value={title}
+        onChange={(e) => setTitle(e.target.value)}
       />
       {error?.map((err) => err.path === "tags") && (
         <span style={{ color: "red" }}>
@@ -99,6 +135,8 @@ const CreateProject = () => {
       )}
       <textarea
         {...register("text")}
+        value={text}
+        onChange={(e) => setText(e.target.value)}
         className={`textarea ${style["project-description"]}`}
         placeholder="Введите описание проекта"
       ></textarea>
@@ -109,6 +147,7 @@ const CreateProject = () => {
         </span>
       )}
       <input
+        value={needs}
         onChange={(e) => setNeeds(e.target.value)}
         type="text"
         className="input"
@@ -140,11 +179,11 @@ const CreateProject = () => {
       />
       <div>
         <button className="btn" type="submit">
-          Создать
+          Сохранить
         </button>
       </div>
     </form>
   );
 };
 
-export default CreateProject;
+export default EditProject;

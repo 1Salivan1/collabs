@@ -1,0 +1,19 @@
+.input-block {
+  display: flex;
+  flex-direction: column;
+  &__error {
+    color: red;
+  }
+  &__input {
+    border: none;
+    border-radius: 10px;
+    background-color: #454545;
+    padding: 10px;
+    font-size: 20px;
+    margin-bottom: 20px;
+    color: white;
+  }
+  &__input:focus {
+    outline: none;
+  }
+}

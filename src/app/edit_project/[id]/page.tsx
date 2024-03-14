@@ -1,9 +1,9 @@
-import Edit from "@/src/components/CreateProject/CreateProject";
+import EditProject from "@/src/components/EditProject/EditProject";
 
-export default function Edit_Project() {
+export default function Edit_Project(props: any) {
   return (
     <section>
-      <Edit />
+      <EditProject id={props.params.id} />
     </section>
   );
 }
