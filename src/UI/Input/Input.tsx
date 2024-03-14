@@ -2,7 +2,7 @@ import React from "react";
 import style from "./Input.module.scss";
 
 interface Props {
-  onChange?: () => void;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   value?: string;
   error?: string;
   placeholder?: string;
@@ -11,11 +11,12 @@ interface Props {
 const Input = ({ onChange, placeholder, value, error }: Props) => {
   return (
     <div className={style["input-block"]}>
-      {error !== undefined ? (
+      {error ? (
         <span className={style["input-block__error"]}>{error}</span>
       ) : (
         ""
       )}
+
       <input
         className={style["input-block__input"]}
         onChange={onChange}

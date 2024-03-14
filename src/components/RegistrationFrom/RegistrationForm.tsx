@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import Link from "next/link";
+import moduleStyle from "./RegistrationForm.module.scss";
 import style from "../../styles/auth.module.scss";
 import { tags } from "@/src/components/SortByTags/tags";
 import axios, { AxiosError } from "axios";
@@ -14,7 +15,6 @@ const RegistrationForm = () => {
   const [password, setPassword] = useState("");
   const [tagsArr, setTagsArr] = useState<string[]>([]);
   const [about, setAbout] = useState("");
-  const [aboutLength, setAboutLength] = useState(0);
   const [telegram, setTelegram] = useState("");
   const [discord, setDiscord] = useState("");
   const [linkedin, setLinkedin] = useState("");
@@ -80,53 +80,20 @@ const RegistrationForm = () => {
 
   return (
     <form action="" onSubmit={handlePost} className={style.login_form}>
-      <Input error="qe" />
-      <Button text="qwewqe" />
-      <TextArea />
       <h1>Регистрация</h1>
       {error?.map((err) => err.path === "exist") && (
         <span style={{ color: "red" }}>
           {error.find((err) => err.path === "exist")?.msg}
         </span>
       )}
-      {error?.map((err) => err.path === "username") && (
-        <span style={{ color: "red" }}>
-          {error.find((err) => err.path === "username")?.msg}
-        </span>
-      )}
-      <input
-        type="text"
-        className="input"
-        value={username}
-        onChange={(e) => setUsername(e.target.value)}
-        name="username"
+      <Input
         placeholder="Имя или псевдоним"
+        onChange={(e) => setUsername(e.target.value)}
       />
-      {error?.map((err) => err.path === "email") && (
-        <span style={{ color: "red" }}>
-          {error.find((err) => err.path === "email")?.msg}
-        </span>
-      )}
-      <input
-        type="email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        name="email"
-        className="input"
-        placeholder="E-mail"
-      />
-      {error?.map((err) => err.path === "password") && (
-        <span style={{ color: "red" }}>
-          {error.find((err) => err.path === "password")?.msg}
-        </span>
-      )}
-      <input
-        type="password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-        name="password"
-        className="input"
+      <Input placeholder="Email" onChange={(e) => setEmail(e.target.value)} />
+      <Input
         placeholder="Пароль"
+        onChange={(e) => setPassword(e.target.value)}
       />
       {error?.map((err) => err.path === "tags") && (
         <span style={{ color: "red" }}>
@@ -146,21 +113,11 @@ const RegistrationForm = () => {
           </label>
         ))}
       </div>
-      <textarea
-        className={`textarea ${style["registration-textarea"]}`}
-        value={about}
-        onChange={(e) => {
-          setAbout(e.target.value), setAboutLength(e.target.value.length);
-        }}
-        name="about"
+      <TextArea
         placeholder="Расскажите о себе, или о том, какую команду хотите найти"
-      ></textarea>
-      {error?.map((err) => err.path === "about") && (
-        <span style={{ color: "red" }}>
-          {error.find((err) => err.path === "about")?.msg}
-        </span>
-      )}
-      <span className={style["about-length"]}>{aboutLength} / 2000</span>
+        onChange={(e) => setAbout(e.target.value)}
+        error="wqeq"
+      />
       <div>
         <h4>Контакты, (укажите 1 или более на выбор)</h4>
         {error?.map((err) => err.path === "socials") && (
@@ -169,38 +126,25 @@ const RegistrationForm = () => {
           </span>
         )}
         <div className={style["contacts-block"]}>
-          <input
-            type="text"
-            className="input"
-            value={telegram}
+          <Input
             onChange={(e) => setTelegram(e.target.value)}
-            name="telegram"
             placeholder="Telegram link"
           />
-          <input
-            type="text"
-            className="input"
-            value={discord}
-            onChange={(e) => setDiscord(e.target.value)}
-            name="discord"
-            placeholder="Discord nickname"
-          />
-          <input
-            type="text"
-            className="input"
-            value={linkedin}
+
+          <Input
             onChange={(e) => setLinkedin(e.target.value)}
-            name="linkedin"
-            placeholder="Linked-in link"
+            placeholder="Linkedin link"
+          />
+          <Input
+            onChange={(e) => setDiscord(e.target.value)}
+            placeholder="Discord nickname"
           />
         </div>
       </div>
       <div>
-        <button className="btn" type="submit">
-          Зарегестрироваться
-        </button>
+        <Button text="Зарегестрироваться" type="submit" />
       </div>
-      <p>Уже есть аккаунт?</p>
+      <span className={moduleStyle["have-account"]}>Уже есть аккаунт?</span>
       <div>
         <Link href="/login" className={style.link}>
           Войти
