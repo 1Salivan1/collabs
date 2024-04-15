@@ -4,33 +4,18 @@ import style from "../../styles/auth.module.scss";
 import API_BASE_URL from "@/config";
 import axios, { AxiosError } from "axios";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useAppDispatch } from "@/src/hooks/reduxHooks";
+import { logIn } from "@/src/redux/thunks/userThunk";
 
 const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const router = useRouter();
+  const dispatch = useAppDispatch();
 
-  const handlePost = async (e: React.FormEvent) => {
+  const handlePost = (e: React.FormEvent) => {
     e.preventDefault();
-    try {
-      const response = await axios.post(`${API_BASE_URL}/auth/login`, {
-        email,
-        password,
-      });
-      if (!response) {
-        throw new AxiosError();
-      }
-      document.cookie = `login=${response.data}; max-age=2506000`;
-      router.push("/");
-    } catch (error) {
-      if (axios.isAxiosError(error) && error.response) {
-        setError(error.response.data.msg);
-      } else {
-        console.error("Error during registration:", error);
-      }
-    }
+    dispatch(logIn({ email, password }));
   };
 
   return (

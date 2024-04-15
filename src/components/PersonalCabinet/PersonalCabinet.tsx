@@ -1,7 +1,4 @@
 "use client";
-import API_BASE_URL from "@/config";
-import { User } from "@/src/types/types";
-import axios, { AxiosError } from "axios";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import avatar from "@/public/avatar.png";
@@ -9,32 +6,18 @@ import settings from "@/public/settings.png";
 import style from "./personal_cabinet.module.scss";
 import Link from "next/link";
 import getCookie from "@/src/utils/getCookie";
+import { useAppDispatch, useAppSelector } from "@/src/hooks/reduxHooks";
+import { getMyProfile } from "@/src/redux/thunks/userThunk";
 
 const PersonalCabinet = () => {
-  const [user, setUser] = useState<User>();
+  const user = useAppSelector((state) => state.user);
+  const status = useAppSelector((state) => state.status);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const headers = {
-          Authorization: `Bearer ${getCookie("login")}`,
-        };
+  console.log(status);
 
-        const response = await axios.get(`${API_BASE_URL}/auth/me`, {
-          headers,
-        });
-
-        if (!response.data) {
-          throw new AxiosError();
-        }
-        setUser(response.data.user);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-
-    fetchData();
-  });
+  if (status === "loading") {
+    return <h1>Loading...</h1>;
+  }
 
   return (
     <section className={style.personal}>
@@ -50,24 +33,38 @@ const PersonalCabinet = () => {
             </Link>
           </div>
           <ul className="tags">
-            {user?.tags.map((tag) => (
-              <li key={tag} className="tag">
-                {tag}
-              </li>
-            ))}
+            {user &&
+              user.tags &&
+              user.tags.map((tag) => (
+                <li key={tag} className="tag">
+                  {tag}
+                </li>
+              ))}
           </ul>
         </div>
       </div>
-      <div className={style.description}>
+      <div className={style["personal-block"]}>
         <h2>Обо мне:</h2>
         <p>{user?.about}</p>
       </div>
       <div>
         <h2>Контакты для связи со мной:</h2>
         <ul>
-          {user?.socials.map((social) => (
-            <li key={social}>{social}</li>
-          ))}
+          {user?.telegram ? (
+            <li>
+              Telegram: <a href={user.telegram}>{user.telegram}</a>
+            </li>
+          ) : (
+            ""
+          )}
+          {user?.linkedin ? (
+            <li>
+              LinkedIn: <a href={user.discord}>{user.linkedin}</a>
+            </li>
+          ) : (
+            ""
+          )}
+          {user?.discord ? <li>Discord: {user.discord}</li> : ""}
         </ul>
       </div>
     </section>

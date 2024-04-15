@@ -6,9 +6,10 @@ interface Props {
   value?: string;
   error?: string;
   placeholder?: string;
+  type?: string;
 }
 
-const Input = ({ onChange, placeholder, value, error }: Props) => {
+const Input = ({ onChange, placeholder, value, error, type }: Props) => {
   return (
     <div className={style["input-block"]}>
       {error ? (
@@ -22,6 +23,7 @@ const Input = ({ onChange, placeholder, value, error }: Props) => {
         onChange={onChange}
         placeholder={placeholder}
         value={value}
+        type={type}
       />
     </div>
   );

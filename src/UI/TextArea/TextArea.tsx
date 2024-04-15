@@ -2,13 +2,13 @@ import React from "react";
 import style from "./TextArea.module.scss";
 
 interface Props {
-  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onChange?: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
   placeholder?: string;
   value?: string;
   error?: string;
 }
 
-const TextArea = ({ placeholder, value, error }: Props) => {
+const TextArea = ({ placeholder, value, error, onChange }: Props) => {
   return (
     <div className={style["textarea-block"]}>
       {error ? (
@@ -17,6 +17,7 @@ const TextArea = ({ placeholder, value, error }: Props) => {
         ""
       )}
       <textarea
+        onChange={onChange}
         className={style["textarea-block__textarea"]}
         placeholder={placeholder}
         value={value}

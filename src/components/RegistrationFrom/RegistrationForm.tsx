@@ -8,6 +8,7 @@ import axios, { AxiosError } from "axios";
 import Input from "@/src/UI/Input/Input";
 import Button from "@/src/UI/Button/Button";
 import TextArea from "@/src/UI/TextArea/TextArea";
+import { useRouter } from "next/navigation";
 
 const RegistrationForm = () => {
   const [username, setUsername] = useState("");
@@ -18,8 +19,9 @@ const RegistrationForm = () => {
   const [telegram, setTelegram] = useState("");
   const [discord, setDiscord] = useState("");
   const [linkedin, setLinkedin] = useState("");
-  const [error, setError] = useState<{ path: string; msg: string }[] | []>([]);
+  const [error, setError] = useState<{ path: string; msg: string }[] | []>();
   const [success, setSuccess] = useState<null | boolean>(null);
+  const router = useRouter();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (tagsArr.includes(e.target.value)) {
@@ -33,28 +35,28 @@ const RegistrationForm = () => {
 
   const handlePost = async (e: React.FormEvent) => {
     e.preventDefault();
-    const socials = [
-      telegram && `Telegram - ${telegram}`,
-      discord && `Discord - ${discord}`,
-      linkedin && `Linked-in - ${linkedin}`,
-    ].filter(Boolean);
     try {
       const response = await axios.post(
-        `${process.env.NEXT_PUBLIC_API_BASE_URL}/auth/registration`,
+        `${process.env.API_BASE_URL}/auth/registration`,
         {
           username,
           email,
           password,
           tags: tagsArr,
           about,
-          socials,
+          telegram: telegram,
+          linkedin: linkedin,
+          discord: discord,
         }
       );
+      const data = await response.data;
       if (!response) {
         throw new AxiosError();
       }
       if (response.status === 200) {
         setSuccess(true);
+        document.cookie = `token=${data.user.token}; max-age=2506000`;
+        router.push("/");
       }
     } catch (error) {
       if (axios.isAxiosError(error) && error.response) {
@@ -65,41 +67,33 @@ const RegistrationForm = () => {
     }
   };
 
-  if (success === true) {
-    return (
-      <div className={style.login_form}>
-        <h4 className={style.success}>Регистрация прошла успешно!</h4>
-        <div>
-          <Link href="/login" className="btn">
-            Войти
-          </Link>
-        </div>
-      </div>
-    );
-  }
+  const findError = (errorName: string) => {
+    if (Array.isArray(error)) {
+      const foundError = error.find((err) => err.path === errorName);
+      return foundError ? foundError.msg : undefined;
+    }
+  };
 
   return (
     <form action="" onSubmit={handlePost} className={style.login_form}>
       <h1>Регистрация</h1>
-      {error?.map((err) => err.path === "exist") && (
-        <span style={{ color: "red" }}>
-          {error.find((err) => err.path === "exist")?.msg}
-        </span>
-      )}
       <Input
         placeholder="Имя или псевдоним"
         onChange={(e) => setUsername(e.target.value)}
+        error={findError("username")}
+        type="text"
       />
-      <Input placeholder="Email" onChange={(e) => setEmail(e.target.value)} />
+      <Input
+        placeholder="Email"
+        onChange={(e) => setEmail(e.target.value)}
+        type="email"
+      />
       <Input
         placeholder="Пароль"
         onChange={(e) => setPassword(e.target.value)}
+        type="password"
       />
-      {error?.map((err) => err.path === "tags") && (
-        <span style={{ color: "red" }}>
-          {error.find((err) => err.path === "tags")?.msg}
-        </span>
-      )}
+      <span style={{ color: "red" }}>{findError("tags")}</span>
       <div className={style.registration_languages}>
         <h4>Выберете языки которые вы используете в работе</h4>
         {tags.map((tag) => (
@@ -116,24 +110,24 @@ const RegistrationForm = () => {
       <TextArea
         placeholder="Расскажите о себе, или о том, какую команду хотите найти"
         onChange={(e) => setAbout(e.target.value)}
-        error="wqeq"
+        error={findError("about")}
       />
       <div>
         <h4>Контакты, (укажите 1 или более на выбор)</h4>
-        {error?.map((err) => err.path === "socials") && (
-          <span style={{ color: "red" }}>
-            {error.find((err) => err.path === "socials")?.msg}
-          </span>
-        )}
+        <span style={{ color: "red" }}>{findError("socials")}</span>
         <div className={style["contacts-block"]}>
           <Input
             onChange={(e) => setTelegram(e.target.value)}
             placeholder="Telegram link"
+            error={findError("telegram")}
+            type="url"
           />
 
           <Input
             onChange={(e) => setLinkedin(e.target.value)}
             placeholder="Linkedin link"
+            error={findError("linkedin")}
+            type="url"
           />
           <Input
             onChange={(e) => setDiscord(e.target.value)}

@@ -5,40 +5,15 @@ import axios, { AxiosError } from "axios";
 import API_BASE_URL from "@/config";
 import { User } from "@/src/types/types";
 import getCookie from "@/src/utils/getCookie";
+import { useAppSelector } from "@/src/hooks/reduxHooks";
 
 const Navigation = () => {
   const [active, setActive] = useState(false);
-  const [user, setUser] = useState<User | null>(null);
+  const user = useAppSelector((state) => state.user);
 
   const toggleMenu = () => {
     setActive(!active);
   };
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        if (getCookie("login") !== undefined) {
-          const headers = {
-            Authorization: `Bearer ${getCookie("login")}`,
-          };
-
-          const response = await axios.get(`${API_BASE_URL}/auth/me`, {
-            headers,
-          });
-
-          if (!response.data) {
-            throw new AxiosError();
-          }
-
-          setUser(response.data.user);
-        }
-      } catch (error) {
-        console.log(error);
-      }
-    };
-
-    fetchData();
-  }, []);
 
   return (
     <div className="navigation">
@@ -74,7 +49,7 @@ const Navigation = () => {
             style={{ fontWeight: "400", cursor: "pointer" }}
             onClick={() => {
               document.cookie =
-                "login=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
+                "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
               location.reload();
             }}
           >

@@ -2,10 +2,11 @@ export type User = {
   _id: string;
   username: string;
   email: string;
-  git: string;
   tags: [string];
-  socials: [string];
   about: string;
+  telegram?: string;
+  linkedin?: string;
+  discord?: string;
 };
 
 export type projectCardType = {
