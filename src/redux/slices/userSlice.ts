@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getMyProfile, logIn } from "../thunks/userThunk";
+import { getMyProfile } from "../thunks/userThunk";
 import { User } from "@/src/types/types";
 
 enum Status {
@@ -25,15 +25,6 @@ export const userSlice = createSlice({
         state.user = action.payload;
       })
       .addCase(getMyProfile.rejected, (state) => {
-        state.status = Status.Error;
-      })
-      .addCase(logIn.pending, (state) => {
-        state.status = Status.Loading;
-      })
-      .addCase(logIn.fulfilled, (state) => {
-        state.status = Status.Success;
-      })
-      .addCase(logIn.rejected, (state) => {
         state.status = Status.Error;
       });
   },
