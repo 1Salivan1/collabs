@@ -1,0 +1,41 @@
+.personal {
+  li {
+    list-style-type: none;
+  }
+  h2 {
+    margin-bottom: 10px;
+  }
+  .info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 50px;
+    .text_info {
+      .nickname {
+        margin-bottom: 5px;
+        display: flex;
+        align-items: center;
+        h1 {
+          font-size: 24px;
+          margin-right: 5px;
+        }
+        icon-container: {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 30px;
+          height: 30px;
+          margin-left: 5px;
+        }
+      }
+      .git {
+        margin-bottom: 7px;
+      }
+    }
+  }
+  .personal-block {
+    margin-bottom: 50px;
+  }
+  .personal-block:last-child {
+    margin-bottom: 0;
+  }
+}

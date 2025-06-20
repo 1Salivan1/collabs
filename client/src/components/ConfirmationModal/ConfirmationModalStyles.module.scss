@@ -1,0 +1,26 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .modalContent {
+    background-color: #414141;
+    padding: 24px;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+    .modalText {
+      margin-bottom: 16px;
+    }
+    .buttonBlock {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      .cancelButton {
+        background-color: aquamarine;
+      }
+    }
+  }
+}

@@ -1,0 +1,15 @@
+export const tagsArray = [
+  "JavaScript",
+  "TypeScript",
+  "React",
+  "Vue",
+  "Angular",
+  "Node.js",
+  "Python",
+  "PHP",
+  "C++",
+  "C#",
+  ".NET",
+  "Java",
+  "Go",
+];

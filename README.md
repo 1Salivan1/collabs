@@ -1,36 +1,34 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Як запустити
 
-## Getting Started
+Приклади команд використовуються у терміналі `bash`. При використанні інших терміналів команди можуть змінюватися.
 
-First, run the development server:
+## Front-end
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+Перейдіть у директорію `client`, після чого введіть команду `npm install`.
+
+### Команди для клієнтської частини
+
+1. `npm run dev` - для запуску серидовища розробки
+2. `npm run build` - для збірки проєкту у фінальний варіант
+3. `npm run start` - для запуску зібраного проєкту (перед цим необхідно виконати команду 2)
+
+## Back-end
+
+Перейдіть у директорію `backend`, після чого введіть команду `npm install`.
+
+### Команди для серверної частини
+
+1. `npm run dev` - для запуску серидовища розробки
+2. `npm run build` - для компіляції TypeScript коду у JavaScript
+3. `npm run start` - для запуску зкомпільованого коду
+
+### Налаштування `env` файлу
+
 ```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+USER=користувач_postgre
+PASSWORD=пароль_юкористувача_postgre
+HOST=ім'я_хосту
+PORT=порт
+DATABASE=ім'я_бази_даних
+SECRET=секретний_ключ_для_jwt
+```

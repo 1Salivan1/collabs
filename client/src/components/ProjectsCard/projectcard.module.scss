@@ -1,0 +1,59 @@
+.project_card {
+  padding: 10px;
+  background-color: #454545;
+  color: white;
+  border-radius: 10px;
+  box-shadow: 7px 1px 30px -20px rgba(0, 0, 0, 0.75);
+  margin-bottom: 25px;
+  max-height: 300px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  .project-card__header {
+    font-weight: 600;
+    font-size: 20px;
+    p {
+      margin-bottom: 10px;
+    }
+  }
+  .project-card__description {
+    margin-top: 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-height: 100px;
+  }
+
+  .edit-delete {
+    display: flex;
+    align-items: flex-start;
+    .btn-edit {
+      color: black;
+      border: none;
+      font-weight: 600;
+      margin-right: 5px;
+      cursor: pointer;
+      background-color: #ffc400;
+      padding: 10px;
+      border-radius: 10px;
+    }
+
+    .btn-delete {
+      color: white;
+      font-weight: 600;
+      border: none;
+      padding: 10px;
+      border-radius: 10px;
+      background-color: #a70909;
+      cursor: pointer;
+    }
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .edit-delete {
+    flex-direction: column;
+    align-items: flex-end;
+    .btn-edit {
+      margin-bottom: 10px;
+    }
+  }
+}

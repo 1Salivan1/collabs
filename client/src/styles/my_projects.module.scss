@@ -1,0 +1,12 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .looking_for__header {
+    font-size: 30px;
+  }
+
+  .create-new-btn {
+    margin-bottom: 15px;
+  }
+}
