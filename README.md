@@ -1,34 +1,18 @@
-# Як запустити
+# How to Run
 
-Приклади команд використовуються у терміналі `bash`. При використанні інших терміналів команди можуть змінюватися.
+`npm run dev` - starting dev mode
 
-## Front-end
+`npm run build` - start compiling
 
-Перейдіть у директорію `client`, після чого введіть команду `npm install`.
+`npm run start` - start compiling code
 
-### Команди для клієнтської частини
-
-1. `npm run dev` - для запуску серидовища розробки
-2. `npm run build` - для збірки проєкту у фінальний варіант
-3. `npm run start` - для запуску зібраного проєкту (перед цим необхідно виконати команду 2)
-
-## Back-end
-
-Перейдіть у директорію `backend`, після чого введіть команду `npm install`.
-
-### Команди для серверної частини
-
-1. `npm run dev` - для запуску серидовища розробки
-2. `npm run build` - для компіляції TypeScript коду у JavaScript
-3. `npm run start` - для запуску зкомпільованого коду
-
-### Налаштування `env` файлу
+### `.env` file configuration
 
 ```
-USER=користувач_postgre
-PASSWORD=пароль_юкористувача_postgre
-HOST=ім'я_хосту
-PORT=порт
-DATABASE=ім'я_бази_даних
-SECRET=секретний_ключ_для_jwt
+USER=your_postgre_user
+PASSWORD=your_postgre_user_password
+HOST=your_host_name
+PORT=port
+DATABASE=your_database_name
+SECRET=jwt_secret_key
 ```
